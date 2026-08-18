@@ -35,7 +35,7 @@ jobs:
       
 
       - name: Strip [patch.crates-io] for crates.io-only CI
-        uses: BTCDecoded/rust-ci/strip-patch-crates-io@main
+        uses: RandyMcMillan/rust-ci/strip-patch-crates-io@main
       - name: Cleanup any leftover dependency directories
         run: |
           # Remove any leftover dependency directories from previous jobs
@@ -60,12 +60,12 @@ jobs:
           echo "TARGET_CACHE_DIR=$TARGET_CACHE_DIR" >> $GITHUB_ENV
       
       - name: Restore Cargo cache
-        uses: BTCDecoded/rust-ci/runner-cargo-cache@main
+        uses: RandyMcMillan/rust-ci/runner-cargo-cache@main
         with:
           operation: restore
 
       - name: Install Rust
-        uses: BTCDecoded/rust-ci/install-rust-toolchain@main
+        uses: RandyMcMillan/rust-ci/install-rust-toolchain@main
       
       - name: Run tests with coverage
         id: coverage
@@ -114,7 +114,7 @@ jobs:
       
       - name: Save Cargo cache
         if: always()
-        uses: BTCDecoded/rust-ci/runner-cargo-cache@main
+        uses: RandyMcMillan/rust-ci/runner-cargo-cache@main
         with:
           operation: save
 
